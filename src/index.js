@@ -4,7 +4,9 @@ import log from 'loglevel';
 import reportWebVitals from './reportWebVitals';
 import Index from './app/Index';
 
-log.setLevel('DEBUG');
+if (process.env.NODE_ENV === 'development') {
+  log.setLevel(log.levels.DEBUG);
+}
 
 ReactDOM.render(
   Index(),
