@@ -1,3 +1,4 @@
+import log from 'loglevel';
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import routes from '../helpers/routes';
@@ -17,12 +18,15 @@ function ResultPage() {
   const calcReviews = () => {
     if (!quiz) return;
 
+    let localScore = 0;
+
     const analysis = quiz.questions.map((question, index) => {
       // It was good answer?
+      log.debug(`${question.answer} === ${answers[index].response}`);
       const isGoodAnswer = question.answer === answers[index].response;
 
       // If it was good, then sum the score up
-      if (isGoodAnswer) setScore(score + 1);
+      if (isGoodAnswer) localScore += 1;
 
       // Return the review
       return {
@@ -32,6 +36,7 @@ function ResultPage() {
     });
 
     setReviews(analysis);
+    setScore(localScore);
   };
 
   useEffect(() => {
