@@ -1,0 +1,28 @@
+$success: #0B5E14;
+$danger: #A62214;
+
+.correct,
+.notcorrect {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 250px;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.5em;
+
+    &:hover {
+        // opacity: 0.3;
+        filter: contrast(2);
+    }
+}
+
+.correct {
+    background-color: $success;
+}
+
+.notcorrect {
+    background-color: $danger;
+}

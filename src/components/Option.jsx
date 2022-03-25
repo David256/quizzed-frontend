@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Option.scss';
 
 function Option({ isCorrect, onClick }) {
   const handlerKey = (event) => {
