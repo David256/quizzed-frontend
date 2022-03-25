@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import routes from '../helpers/routes';
 
 function HomePage() {
   return (
@@ -13,7 +15,9 @@ function HomePage() {
         can you score 100%?
       </p>
 
-      <button type="button">begin</button>
+      <Link to={routes.preface}>
+        <button type="button">begin</button>
+      </Link>
     </div>
   );
 }
