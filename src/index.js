@@ -1,7 +1,10 @@
 import ReactDOM from 'react-dom';
 import './index.css';
-import Index from './app/Index';
+import log from 'loglevel';
 import reportWebVitals from './reportWebVitals';
+import Index from './app/Index';
+
+log.setLevel('DEBUG');
 
 ReactDOM.render(
   Index(),
