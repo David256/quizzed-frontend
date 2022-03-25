@@ -19,7 +19,7 @@ function Layout({ children }) {
           target="_blank"
           rel="noreferrer"
         >
-          Source
+          Source code
         </a>
       </footer>
     </div>
