@@ -2,10 +2,17 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import SessionProvider from '../session/SessionProvider';
 import HomePage from './HomePage';
 
 test('renders HomePage', () => {
-  render(<MemoryRouter><HomePage /></MemoryRouter>);
+  render(
+    <MemoryRouter>
+      <SessionProvider>
+        <HomePage />
+      </SessionProvider>
+    </MemoryRouter>,
+  );
   const title = screen.getByText(/welcome to the trivia challenge/i);
   expect(title).toBeInTheDocument();
 

@@ -3,6 +3,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import ResultPage from './ResultPage';
+import SessionProvider from '../session/SessionProvider';
 
 test('renders ResultPage', () => {
   const results = [
@@ -17,7 +18,15 @@ test('renders ResultPage', () => {
       answer: false,
     },
   ];
-  render(<MemoryRouter><ResultPage results={results} /></MemoryRouter>);
+
+  render(
+    <MemoryRouter>
+      <SessionProvider>
+        <ResultPage results={results} />
+      </SessionProvider>
+    </MemoryRouter>,
+  );
+
   const title = screen.getByText(/results/i);
   expect(title).toBeInTheDocument();
 

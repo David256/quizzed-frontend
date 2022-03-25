@@ -3,9 +3,16 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import PrefacePage from './PrefacePage';
+import SessionProvider from '../session/SessionProvider';
 
 test('renders PrefacePage', () => {
-  render(<MemoryRouter><PrefacePage /></MemoryRouter>);
+  render(
+    <MemoryRouter>
+      <SessionProvider>
+        <PrefacePage />
+      </SessionProvider>
+    </MemoryRouter>,
+  );
   const title = screen.getByText(/preface/i);
   expect(title).toBeInTheDocument();
 

@@ -3,9 +3,16 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import QuizPage from './QuizPage';
+import SessionProvider from '../session/SessionProvider';
 
 test('renders QuizPage', () => {
-  render(<MemoryRouter><QuizPage /></MemoryRouter>);
+  render(
+    <MemoryRouter>
+      <SessionProvider>
+        <QuizPage />
+      </SessionProvider>
+    </MemoryRouter>,
+  );
   const title = screen.getByText(/quiz/i);
   expect(title).toBeInTheDocument();
 
