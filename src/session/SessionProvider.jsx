@@ -6,8 +6,8 @@ import log from 'loglevel';
 export const sessionContext = createContext();
 
 function SessionProvider({ children }) {
-  const [quizName, setQuizName] = useState('abc');
-  const [userEmail, setUserEmail] = useState('abc@mm.es');
+  const [quizName, setQuizName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const [providerOptions, setProviderOptions] = useState([
     {
       value: 'local',
@@ -22,7 +22,7 @@ function SessionProvider({ children }) {
       text: 'opentdb.com provider',
     },
   ]);
-  const [selectedProvider, setSelectedProvider] = useState('local');
+  const [selectedProvider, setSelectedProvider] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [quiz, setQuiz] = useState(null);
 

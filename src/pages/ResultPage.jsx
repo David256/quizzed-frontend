@@ -1,4 +1,6 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
+import routes from '../helpers/routes';
 import useSession from '../session/useSession';
 
 function ResultPage() {
@@ -6,6 +8,8 @@ function ResultPage() {
     answers,
     quiz,
   } = useSession();
+
+  if (!quiz || !answers) return <Navigate to={routes.quiz} />;
 
   const reviews = () => {
     if (!quiz) return [];

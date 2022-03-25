@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import log from 'loglevel';
 import routes from '../helpers/routes';
 import useSession from '../session/useSession';
@@ -19,6 +19,8 @@ function QuizPage() {
   const [index, setIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [isFinished, setIsFinished] = useState(false);
+
+  if (!quizName) return <Navigate to={routes.preface} />;
 
   /**
    * Get next question and save in `currentQuestion`
