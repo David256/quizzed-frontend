@@ -21,6 +21,14 @@ function Layout({ children }) {
         >
           Source code
         </a>
+        {' - '}
+        <a
+          href={`${process.env.REACT_APP_ENDPOINT_URL}/api-docs`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Go to API documentation
+        </a>
       </footer>
     </div>
   );
