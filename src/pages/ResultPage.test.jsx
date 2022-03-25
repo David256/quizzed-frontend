@@ -6,23 +6,10 @@ import ResultPage from './ResultPage';
 import SessionProvider from '../session/SessionProvider';
 
 test('renders ResultPage', () => {
-  const results = [
-    {
-      id: 'id-1',
-      question: 'question 1?',
-      answer: true,
-    },
-    {
-      id: 'id-2',
-      question: 'question 2?',
-      answer: false,
-    },
-  ];
-
   render(
     <MemoryRouter>
       <SessionProvider>
-        <ResultPage results={results} />
+        <ResultPage />
       </SessionProvider>
     </MemoryRouter>,
   );
@@ -31,5 +18,5 @@ test('renders ResultPage', () => {
   expect(title).toBeInTheDocument();
 
   const list = screen.getByLabelText('results');
-  expect(list.children.length).toBe(2);
+  expect(list).toBeInTheDocument();
 });
