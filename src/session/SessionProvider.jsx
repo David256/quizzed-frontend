@@ -22,7 +22,7 @@ function SessionProvider({ children }) {
       text: 'opentdb.com provider',
     },
   ]);
-  const [selectedProvider, setSelectedProvider] = useState(null);
+  const [selectedProvider, setSelectedProvider] = useState('local');
   const [answers, setAnswers] = useState([]);
   const [quiz, setQuiz] = useState(null);
 
@@ -31,7 +31,13 @@ function SessionProvider({ children }) {
     log.debug(`quiz name = ${quizName}`);
     params.append('name', quizName);
 
-    axios.post('http://localhost:8080/quizzes', params, {
+    let url = 'http://localhost:8080/quizzes';
+    if (selectedProvider) {
+      url = `${url}?provider=${selectedProvider}`;
+    }
+    log.info(url);
+
+    axios.post(url, params, {
       'Content-Type': 'application/x-www-form-urlencoded',
     }).then((response) => {
       log.info(response.data);
