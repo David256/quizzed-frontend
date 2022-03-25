@@ -1,10 +1,11 @@
 /* global test, expect */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import PrefacePage from './PrefacePage';
 
 test('renders PrefacePage', () => {
-  render(<PrefacePage />);
+  render(<MemoryRouter><PrefacePage /></MemoryRouter>);
   const title = screen.getByText(/preface/i);
   expect(title).toBeInTheDocument();
 

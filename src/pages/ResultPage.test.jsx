@@ -1,6 +1,7 @@
 /* global test, expect */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import ResultPage from './ResultPage';
 
 test('renders ResultPage', () => {
@@ -16,7 +17,7 @@ test('renders ResultPage', () => {
       answer: false,
     },
   ];
-  render(<ResultPage results={results} />);
+  render(<MemoryRouter><ResultPage results={results} /></MemoryRouter>);
   const title = screen.getByText(/results/i);
   expect(title).toBeInTheDocument();
 
