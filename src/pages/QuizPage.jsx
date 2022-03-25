@@ -92,6 +92,12 @@ function QuizPage() {
         {' '}
         {quizName}
       </h2>
+      <p>
+        {index}
+        {' of '}
+        {(quiz) ? quiz.questions.length : 0}
+      </p>
+      <hr />
       <div>
         {currentQuestion && (
           <>
