@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import log from 'loglevel';
+import routes from '../helpers/routes';
 import useSession from '../session/useSession';
 import Option from '../components/Option';
 
@@ -12,9 +14,11 @@ function QuizPage() {
     requestQuiz,
     sendAnswers,
   } = useSession();
+  const navigate = useNavigate();
 
   const [index, setIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [isFinished, setIsFinished] = useState(false);
 
   /**
    * Get next question and save in `currentQuestion`
@@ -27,17 +31,31 @@ function QuizPage() {
 
   // Request the quiz
   useEffect(() => {
-    requestQuiz();
+    if (!quiz) {
+      log.info('request quiz');
+      requestQuiz();
+    }
   }, []);
 
   // When  we have quiz, start questioning
   useEffect(() => {
     if (quiz) {
+      log.info('will prepare first question');
       log.info(quiz);
       prepareNextQuestion();
       setIndex(index + 1);
     }
   }, [quiz]);
+
+  useEffect(() => {
+    if (isFinished) {
+      // Save and navigate to next page
+      // Send responses (aka answers)
+      log.info(answers);
+      sendAnswers();
+      navigate(routes.result);
+    }
+  }, [isFinished]);
 
   const onAnswer = (response) => {
     // Save the answer
@@ -54,14 +72,12 @@ function QuizPage() {
     setAnswers([...answers, newAnswer]);
 
     if (index < quiz.questions.length) {
-      log.debug('will prepare next quesstion');
+      log.debug(`will prepare next question, index=${index}`);
       setIndex(index + 1);
       prepareNextQuestion();
     } else {
       log.debug('last question');
-      // Send responses (aka answers)
-      log.info(answers);
-      sendAnswers();
+      setIsFinished(true);
     }
   };
 
