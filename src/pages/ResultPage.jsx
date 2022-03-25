@@ -1,16 +1,29 @@
 import React from 'react';
+import useSession from '../session/useSession';
 
 function ResultPage() {
-  const results = [];
+  const {
+    answers,
+    quiz,
+  } = useSession();
+
+  const reviews = () => {
+    if (!quiz) return [];
+    return quiz.questions.map((question, index) => ({
+      question: question.question,
+      review: (question.answer === answers[index].response) ? 'good' : 'bad',
+    }));
+  };
+
   return (
     <div>
       <h1>results</h1>
       <ul aria-label="results">
-        {results.map((result) => (
-          <li key={result.id}>
-            {result.question}
+        {reviews().map((review) => (
+          <li key={review.question}>
+            {review.question}
             {' - '}
-            {result.answer}
+            {review.review}
           </li>
         ))}
       </ul>
