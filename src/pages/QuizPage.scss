@@ -2,6 +2,11 @@ $danger: #A62214;
 $warning: #CF8619;
 $info: #118591;
 
+.bad {
+    // background-color: $danger;
+    filter: brightness(2);
+}
+
 .loading {
     display: block;
     width: 75px;

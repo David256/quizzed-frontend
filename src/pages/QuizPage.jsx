@@ -21,6 +21,7 @@ function QuizPage() {
   const [index, setIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [isFinished, setIsFinished] = useState(false);
+  const [classDiv, setClassDiv] = useState('');
 
   if (!quizName) return <Navigate to={routes.preface} />;
 
@@ -61,6 +62,11 @@ function QuizPage() {
     }
   }, [isFinished]);
 
+  const maskAsBad = () => {
+    setClassDiv('bad');
+    setTimeout(() => setClassDiv(''), 1000);
+  };
+
   const onAnswer = (response) => {
     // Save the answer
     log.info(`response ${response}`);
@@ -79,6 +85,10 @@ function QuizPage() {
       log.debug(`will prepare next question, index=${index}`);
       setIndex(index + 1);
       prepareNextQuestion();
+
+      if (quiz.questions[index].answer !== response) {
+        maskAsBad();
+      }
     } else {
       log.debug('last question');
       setIsFinished(true);
@@ -86,8 +96,8 @@ function QuizPage() {
   };
 
   return (
-    <div>
-      <h2 className="rotate">
+    <div className={classDiv}>
+      <h2>
         Quiz:
         {' '}
         {quizName}
