@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../helpers/routes';
+import useSession from '../session/useSession';
 import './HomePage.scss';
 
 function HomePage() {
+  const {
+    setAnswers,
+    setQuiz,
+  } = useSession();
+
+  useEffect(() => {
+    setAnswers([]);
+    setQuiz(null);
+  }, []);
+
   return (
     <div className="home-container">
       <h2>Welcome to the trivia challenge</h2>

@@ -1,5 +1,5 @@
 import log from 'loglevel';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSession from '../session/useSession';
 import routes from '../helpers/routes';
@@ -13,6 +13,8 @@ function PrefacePage() {
     providerOptions,
     selectedProvider,
     setSelectedProvider,
+    setAnswers,
+    setQuiz,
   } = useSession();
 
   const navigate = useNavigate();
@@ -40,6 +42,11 @@ function PrefacePage() {
     }
     event.preventDefault();
   };
+
+  useEffect(() => {
+    setAnswers([]);
+    setQuiz(null);
+  }, []);
 
   return (
     <div>
