@@ -1,4 +1,5 @@
 import log from 'loglevel';
+import { v4 as uuid } from 'uuid';
 import React, { useState, useEffect } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import routes from '../helpers/routes';
@@ -48,7 +49,7 @@ function ResultPage() {
       <h2>Results</h2>
       <ul aria-label="results">
         {reviews.map((review) => (
-          <li className="result-item" key={review.question}>
+          <li className="result-item" key={uuid()}>
             <div>{review.question}</div>
             <div className="result-review">{review.review}</div>
           </li>

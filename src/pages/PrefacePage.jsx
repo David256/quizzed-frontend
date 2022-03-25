@@ -1,4 +1,5 @@
 import log from 'loglevel';
+import { v4 as uuid } from 'uuid';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSession from '../session/useSession';
@@ -84,7 +85,7 @@ function PrefacePage() {
         >
           <option>Select a provider (optional)</option>
           {providerOptions.map((option) => (
-            <option key={option.value} value={option.value}>{option.text}</option>
+            <option key={uuid()} value={option.value}>{option.text}</option>
           ))}
         </select>
         <br />
