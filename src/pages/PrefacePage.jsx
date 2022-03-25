@@ -45,21 +45,27 @@ function PrefacePage() {
     <div>
       <h1>preface</h1>
       <form onSubmit={onSubmit}>
-        <p>quiz name</p>
-        <input
-          type="text"
-          aria-label="quiz-name"
-          defaultValue={quizName}
-          onChange={onQuizNameChange}
-        />
-        <p>your email</p>
-        <input
-          type="email"
-          aria-label="user-email"
-          defaultValue={userEmail}
-          onChange={onUserEmailChange}
-        />
-        <p>provider settings</p>
+        <label htmlFor="input-quiz-name">
+          Quiz name:
+          <input
+            id="input-quiz-name"
+            type="text"
+            aria-label="quiz-name"
+            defaultValue={quizName}
+            onChange={onQuizNameChange}
+          />
+        </label>
+        <label htmlFor="input-email">
+          Your email:
+          <input
+            id="input-email"
+            type="email"
+            aria-label="user-email"
+            defaultValue={userEmail}
+            onChange={onUserEmailChange}
+          />
+        </label>
+        <p>Provider settings:</p>
         <select
           role="option"
           defaultValue={selectedProvider}
@@ -72,7 +78,8 @@ function PrefacePage() {
             <option key={option.value} value={option.value}>{option.text}</option>
           ))}
         </select>
-        <button type="submit">next</button>
+        <br />
+        <button type="submit">Next</button>
       </form>
     </div>
   );

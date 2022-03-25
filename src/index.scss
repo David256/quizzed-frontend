@@ -2,8 +2,20 @@ $primary: #3440C7;
 $dark: #180503;
 $light: #e7fafc;
 
-html, body, #root {
-    height: 100%;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+html, body {
+    padding:  0;
+    margin: 0;
+
+    &, #root {
+        height: 100%;
+    }
 }
 
 body {
@@ -17,11 +29,36 @@ body {
 }
 
 button {
-    padding: 1em;
+    padding: 0.5em;
     background: $primary;
     color: $light;
     border-radius: 0.3em;
     border-width: 1px;
     border-color: black;
     font-weight: bolder;
+    min-width: 140px;
+}
+
+a {
+    color: $primary;
+    text-decoration: none;
+}
+
+input {
+    display: block;
+
+    &[type=text], &[type=email] {
+        padding: 0.5em;
+        width: 100%;
+    }
+}
+
+select {
+    display: block;
+    width: 100%;
+    padding: 0.5em;
+}
+
+#container {
+    padding: 0.5em;
 }
