@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import log from 'loglevel';
 import reportWebVitals from './reportWebVitals';
 import Index from './app/Index';
