@@ -1,6 +1,7 @@
 $primary: #3440C7;
 $dark: #180503;
 $light: #e7fafc;
+$backgroundColor: #FDFDFD;
 
 *,
 *::before,
@@ -26,6 +27,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: $dark;
+    background-color: $backgroundColor;
 }
 
 button {
