@@ -1,6 +1,6 @@
 import log from 'loglevel';
 import React, { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import routes from '../helpers/routes';
 import useSession from '../session/useSession';
 import './ResultPage.scss';
@@ -60,6 +60,9 @@ function ResultPage() {
         {Math.ceil((100 * score) / quiz.questions.length)}
         %
       </p>
+      <Link to={routes.home}>
+        <button type="button">Again</button>
+      </Link>
     </div>
   );
 }
