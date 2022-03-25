@@ -1,0 +1,53 @@
+$danger: #A62214;
+$warning: #CF8619;
+$info: #118591;
+
+.loading {
+    display: block;
+    width: 75px;
+    height: 75px;
+    // background-color: $danger;
+    border-radius: 50%;
+    border-left-color: $warning;
+    border-right-color: $info;
+    border-top-color: $danger;
+    border-bottom-color: $danger;
+    border-width: 100%;
+    border-style: solid;
+    border-width: 7px;
+
+    &.rotate {
+        animation: rotation 3s infinite linear;
+    }
+}
+
+.loading-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+}
+
+.quiz-question {
+    font-weight: bolder;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: stretch;
+    border: 1px solid #eee;
+}

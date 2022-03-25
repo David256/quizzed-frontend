@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import log from 'loglevel';
+import { unescape } from 'html-escaper';
 import routes from '../helpers/routes';
 import useSession from '../session/useSession';
 import Option from '../components/Option';
+import './QuizPage.scss';
 
 function QuizPage() {
   const {
@@ -85,18 +87,25 @@ function QuizPage() {
 
   return (
     <div>
-      <h1>
-        quiz
+      <h2 className="rotate">
+        Quiz:
         {' '}
         {quizName}
-      </h1>
+      </h2>
       <div>
         {currentQuestion && (
           <>
-            <strong>{currentQuestion.question}</strong>
-            <Option isCorrect={false} onClick={onAnswer} />
-            <Option isCorrect onClick={onAnswer} />
+            <p className="quiz-question">{unescape(currentQuestion.question)}</p>
+            <div className="quiz-options">
+              <Option isCorrect={false} onClick={onAnswer} />
+              <Option isCorrect onClick={onAnswer} />
+            </div>
           </>
+        )}
+        {!currentQuestion && (
+          <div className="loading-container">
+            <div className="loading rotate">&nbsp;</div>
+          </div>
         )}
       </div>
     </div>
