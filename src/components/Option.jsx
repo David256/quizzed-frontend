@@ -11,11 +11,17 @@ function Option({ isCorrect, onClick }) {
     }
   };
 
+  const handlerEvent = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    onClick(isCorrect);
+  };
+
   return (
     <div
       role="button"
       className={isCorrect ? 'correct' : 'notcorrect'}
-      onClick={() => onClick(isCorrect)}
+      onClick={handlerEvent}
       onKeyDown={handlerKey}
       tabIndex="0"
     >
