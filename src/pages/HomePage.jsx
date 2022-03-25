@@ -6,7 +6,7 @@ import './HomePage.scss';
 function HomePage() {
   return (
     <div className="home-container">
-      <h1>Welcome to the trivia challenge</h1>
+      <h2>Welcome to the trivia challenge</h2>
 
       <p>
         You will be presented with 10 true or false question.

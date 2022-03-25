@@ -43,7 +43,7 @@ function PrefacePage() {
 
   return (
     <div>
-      <h1>preface</h1>
+      <h2>Preface</h2>
       <form onSubmit={onSubmit}>
         <label htmlFor="input-quiz-name">
           Quiz name:
