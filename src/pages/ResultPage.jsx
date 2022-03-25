@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import routes from '../helpers/routes';
 import useSession from '../session/useSession';
+import './ResultPage.scss';
 
 function ResultPage() {
   const {
@@ -39,17 +40,16 @@ function ResultPage() {
 
   return (
     <div>
-      <h1>results</h1>
+      <h2>Results</h2>
       <ul aria-label="results">
         {reviews.map((review) => (
-          <li key={review.question}>
-            {review.question}
-            {' - '}
-            {review.review}
+          <li className="result-item" key={review.question}>
+            <div>{review.question}</div>
+            <div className="result-review">{review.review}</div>
           </li>
         ))}
       </ul>
-      <p>
+      <p className="result-score">
         score:
         {' '}
         {Math.ceil((100 * score) / quiz.questions.length)}
