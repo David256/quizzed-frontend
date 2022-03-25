@@ -55,6 +55,7 @@ function PrefacePage() {
             onChange={onQuizNameChange}
           />
         </label>
+        <br />
         <label htmlFor="input-email">
           Your email:
           <input
@@ -65,6 +66,7 @@ function PrefacePage() {
             onChange={onUserEmailChange}
           />
         </label>
+        <br />
         <p>Provider settings:</p>
         <select
           role="option"
