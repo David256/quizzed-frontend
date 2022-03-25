@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import log from 'loglevel';
 
+const endpointUrl = process.env.REACT_APP_ENDPOINT_URL;
+
 export const sessionContext = createContext();
 
 function SessionProvider({ children }) {
@@ -31,7 +33,7 @@ function SessionProvider({ children }) {
     log.debug(`quiz name = ${quizName}`);
     params.append('name', quizName);
 
-    let url = 'http://localhost:8080/quizzes';
+    let url = `${endpointUrl}/quizzes`;
     if (selectedProvider) {
       url = `${url}?provider=${selectedProvider}`;
     }
@@ -70,7 +72,7 @@ function SessionProvider({ children }) {
     log.info('will send result');
     log.debug(newResult);
 
-    axios.post('http://localhost:8080/results', newResult, {
+    axios.post(`${endpointUrl}/results`, newResult, {
       'Content-Type': 'application/x-www-form-urlencoded',
     }).then((response) => {
       log.info(response.data);
